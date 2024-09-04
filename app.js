@@ -63,13 +63,15 @@ app.get("/listings/:id", async (req, res) => {
 //     res.redirect("listings");
 //   })
 // );
+
+//create Route
 app.post(
-    "/listing",
+    "/listings",
     wrapAsync(async (req, res) => {
       let newListing = await new Listing(req.body.listing);
       await newListing.save();
       res.redirect("/listing");
-      next(err);
+      //next(err);
     })
   );
 
