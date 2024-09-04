@@ -20,7 +20,17 @@
     <div class="card-body">
       <p class="card-text">
        <b><%= listing.title %></b> 
-        <li>&#8377;<%= listing.price.toLocaleString("en-IN") %> / night</li>
+        <!-- <li>&#8377; <%= listing.price.toLocaleString("en-IN") %> / night</li>
+        -->
+        <!-- <li>&#8377;<%= listing.price.toLocaleString("en-IN") %> / night</li> -->
+        <li>
+          &#8377;
+          <% if (listing.price != null) { %>
+            <%= listing.price.toLocaleString("en-IN") %> / night
+          <% } else { %>
+            Price not available
+          <% } %>
+        </li>
       </p>
     </div>
   </div>
