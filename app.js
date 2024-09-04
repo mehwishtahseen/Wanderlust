@@ -65,16 +65,15 @@ app.get("/listings/:id", async (req, res) => {
 // );
 
 //create Route
-app.post(
-    "/listings",
-    wrapAsync(async (req, res) => {
-      let newListing = await new Listing(req.body.listing);
-      await newListing.save();
-      res.redirect("/listing");
-      //next(err);
-    })
-  );
 
+app.post(
+  "/listing",
+  wrapAsync(async (req, res) => {
+    let newListing = await new Listing(req.body.listing);
+    await newListing.save();
+    res.redirect("/listing");
+  })
+);
 //Edit Route
 
 app.get("/listings/:id/edit", async (req, res) => {
