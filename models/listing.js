@@ -10,12 +10,8 @@ const listingSchema = new Schema({
   description: String,
 
   image: {
-    filename: String,
-    url: {
-      type: String,
-      default: "https://images.pexels.com/photos/17644421/pexels-photo-17644421/free-photo-of-seagulls-flying-on-sea-shore.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-
-    }
+    url: String,
+    filename: String, 
   },
 
   price: Number,
@@ -32,6 +28,17 @@ const listingSchema = new Schema({
     type : Schema.Types.ObjectId,
     ref : "User",
   },
+  geometry : {
+    type: {
+      type: String, // Don't do `{ location: { type: String } }`
+      enum: ['Point'], // 'location.type' must be 'Point'
+      required: true
+    },
+    coordinates: {
+      type: [Number],
+      required: true
+    }
+  }
 });
 
 listingSchema.post("findOneAndDelete", async(listing)=>{
